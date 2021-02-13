@@ -1,0 +1,14 @@
+<div>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Missions</span>
+      <span style="flex: 1 1 auto"></span>
+      <button mat-button routerLink="/auth" *ngIf="!isAuthenticated">
+        Authenticate
+      </button>
+      <button mat-button (click)="onLogout()" *ngIf="isAuthenticated">
+        Sign Out
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
