@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>
+  Row Action :: <strong>{{ action }}</strong>
+</h1>
+<div mat-dialog-content>
+  <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
+    <input
+      matInput
+      placeholder="{{ action }} Key"
+      matInput
+      [disabled]="action == 'Update'"
+      [(ngModel)]="local_data.key"
+    />
+  </mat-form-field>
+  <mat-form-field *ngIf="action != 'Delete'">
+    <textarea
+      cols="50"
+      rows="10"
+      placeholder="{{ action }} Value"
+      matInput
+      [(ngModel)]="local_data.value"
+    ></textarea>
+  </mat-form-field>
+  <ng-template #elseTemplate>
+    Sure to delete <b>{{ local_data.key }}</b
+    >?
+  </ng-template>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction()" color="primary" mat-flat-button>
+    {{ action }}
+  </button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">
+    Cancel
+  </button>
+</div>
